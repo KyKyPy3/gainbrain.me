@@ -19,9 +19,12 @@ func NewResumeController(s *mgo.Session) *ResumeController {
 }
 
 func (rc ResumeController) GetResume(c *gin.Context) {
+	session := rc.session.Copy()
+	defer session.Close()
+
 	result := models.Resume{}
 
-	resumeCollection := rc.session.DB("gainbrain").C("resume")
+	resumeCollection := session.DB("gainbrain").C("resume")
 
 	err := resumeCollection.Find(nil).One(&result)
 	if err != nil {
