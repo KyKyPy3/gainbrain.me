@@ -2,13 +2,14 @@ package main
 
 import (
 	"net/http"
-
-	"gopkg.in/mgo.v2"
-
-	"gopkg.in/mgo.v2/bson"
+	"os"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
+
+	models "github.com/KyKyPy3/gainbrain.me/models"
 )
 
 type (
@@ -24,7 +25,8 @@ func main() {
 
 	session, err := mgo.Dial("mongodb://localhost")
 	if err != nil {
-		panic(err)
+		log.Error("Can't connect to mongo instance. Error: %v", err)
+		os.Exit(1)
 	}
 	defer session.Close()
 
