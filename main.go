@@ -1,50 +1,35 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 
-	models "github.com/KyKyPy3/gainbrain.me/models"
+	controllers "gainbrain.me/controllers"
 )
 
-type (
-	// Resume structure
-	Resume struct {
-		Id   bson.ObjectId `json:"id" bson:"_id"`
-		Name string        `json:"name" bson:"name"`
-	}
-)
-
-func main() {
-	log.Info("Starting server....")
-
+func connectToDB() *mgo.Session {
 	session, err := mgo.Dial("mongodb://localhost")
 	if err != nil {
 		log.Error("Can't connect to mongo instance. Error: %v", err)
 		os.Exit(1)
 	}
-	defer session.Close()
 
 	session.SetMode(mgo.Monotonic, true)
 
+	return session
+}
+
+func main() {
+	log.Info("Starting server....")
+
+	rc := controllers.NewResumeController(connectToDB())
+
 	route := gin.Default()
 
-	route.GET("/test", func(c *gin.Context) {
-		result := Resume{}
-
-		collection := session.DB("gainbrain").C("resume")
-		err := collection.Find(nil).One(&result)
-		if err != nil {
-			panic(err)
-		}
-
-		c.JSON(http.StatusOK, result)
-	})
+	route.GET("/resume", rc.GetResume)
 
 	route.Run(":8080")
 }

@@ -1,8 +1,6 @@
-package resume
+package models
 
-import (
-	"gopkg.in/mgo.v2/bson"
-)
+import "gopkg.in/mgo.v2/bson"
 
 type (
 	Resume struct {
