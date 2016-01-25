@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
@@ -30,25 +31,59 @@ func setupDB() {
 	resumeCollection := session.DB("gainbrain").C("resume")
 	resumeCollection.RemoveAll(nil)
 
-	language := models.Language{
-		Language: "Russian",
-		Fluency:  "native",
-	}
-
-	skil := models.Skil{
-		Name:  "Go lang",
-		Level: "Neuwbe",
-	}
+	ts := time.Now()
 
 	resume := models.Resume{
 		Id:      bson.NewObjectId(),
-		Name:    "Test name",
-		SurName: "Test surname",
-		Languages: []models.Language{
-			language,
+		Name:    "Roman",
+		SurName: "Efremenko",
+		Label:   "Web Developer",
+		Summary: "Highly motivated IT professional with ten years of diverse experience in the field of Information technology with emphasis on Web Development, including managing dev teams and developing Web-based and stand alone applications.",
+		Location: models.Location{
+			Country: "Russian Federation",
+			City:    "Moscow",
+			Address: "Ak. Kapicy street, 22, 16",
 		},
-		Skils: []models.Skil{
-			skil,
+		Contacts: []models.Contact{
+			models.Contact{
+				Type:  "email",
+				Value: "roman.efremenko@gmail.com",
+			},
+			models.Contact{
+				Type:  "phone",
+				Value: "+7 (925) 859-3266",
+			},
+		},
+		Languages: []models.Language{
+			models.Language{
+				Name:    "Russian",
+				Fluency: "native",
+			},
+			models.Language{
+				Name:    "English",
+				Fluency: "technical",
+			},
+		},
+		Skills: []models.Skill{
+			models.Skill{
+				Name:  "Go Language",
+				Level: "Neube",
+			},
+		},
+		Interests: []models.Interest{
+			models.Interest{
+				Name: "Web",
+				Keywords: []string{
+					"React",
+					"Backbone",
+				},
+			},
+		},
+		Education: []models.Education{
+			models.Education{
+				Institution: "Moscow Institute of Electronics and Mathematics (Technical University)",
+				StartDate:   &ts,
+			},
 		},
 	}
 
