@@ -1,12 +1,7 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import * as ReactDOM from 'react-dom';
+import App from './App';
 
-class Main extends React.Component<{}, {}> {
-  public render(): React.ReactElement<{}> {
-    return(
-      <div>Test react</div>
-    );
-  }
-}
-
-ReactDOM.render(<Main />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

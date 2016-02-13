@@ -2,11 +2,13 @@
   "compilerOptions": {
     "target": "ES6",
     "jsx": "react",
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true
   },
   "exclude": [
     "node_modules",
+    "server.js",
     "config",
     "typings/main.d.ts",
     "typings/main"
