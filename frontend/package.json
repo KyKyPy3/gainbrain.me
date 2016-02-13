@@ -1,22 +1,38 @@
 {
   "name": "gainbrain.me",
   "version": "1.0.0",
-  "description": "",
+  "description": "My personal site",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config config/webpack.dev.js",
+    "deploy": "NODE_ENV=production webpack -p --config config/webpack.prod.js",
+    "clean": "rm -rf build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Roman Efremenko",
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KyKyPy3/gainbrain.me"
+  },
   "dependencies": {
     "babel-runtime": "^6.3.19",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "ts-loader": "^0.8.1",
+    "typescript": "^1.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13"
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "tslint": "^3.3.0",
+    "tslint-loader": "^2.1.0",
+    "typings": "^0.6.8",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^2.0.0-beta"
   }
 }
