@@ -1,5 +1,0 @@
-package: github.com/KyKyPy3/gainbrain.me
-import:
-- package: github.com/gin-gonic/gin
-- package: github.com/Sirupsen/logrus
-- package: gopkg.in/mgo.v2
