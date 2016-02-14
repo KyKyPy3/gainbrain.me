@@ -1,0 +1,41 @@
+body {
+  background: #EEEEDD;
+  color: #000000;
+  font-size: 70%;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+tr, td, li, th, p {
+  font-size: 13px;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  color: #222222;
+}
+h1 {
+  font-family: Times New Roman;
+  font-size: 26px;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 18px;
+  border-bottom: 2px solid #000000;
+  padding: 2px;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: 18px;
+}
