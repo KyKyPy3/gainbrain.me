@@ -10,7 +10,10 @@ module.exports = {
   entry: {
     vendors: [
       'react',
-      'react-dom'
+      'react-dom',
+      'react-router',
+      'jquery',
+      'i18next',
     ],
     app: [
       'webpack-hot-middleware/client?reload=true',

@@ -5,10 +5,10 @@ export default class Other extends React.Component<{}, {}> {
     return (
       <div>
         <h2>Иностранные языки</h2>
-        <ul type="square">
+        <ul type='square'>
           <li>Английский: технический (чтение профессиональной литературы, деловая переписка)</li>
         </ul>
       </div>
-    )
+    );
   }
 }
